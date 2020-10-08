@@ -1,0 +1,28 @@
+<div>
+  <div class="image">
+    <p>Recipe Book</p>
+  </div>
+  <div class="container">
+    <div class="form">
+      <input type="text" placeholder="Search recipes And More..." [(ngModel)]="type"/>
+      <button (click)="show()">Find Recipe</button>
+    </div>
+    <div class="card_container">
+      <p class="loader" *ngIf="!isLoaded">loading....</p>
+
+      
+      <ng-container *ngIf="isLoaded">
+        <div class="card" *ngFor="let item of recepie">
+          <a [routerLink]="['/recepie', item.id]">
+            <div class="card_image">
+              <img [src]="'https://spoonacular.com/recipeImages/'+item.image" height="150px" alt="cardImage" />
+            </div>
+            <p class="card_title">{{item.title.slice(0,20)}}...</p>
+            <p class="tag">{{item.readyInMinutes}} min</p>
+          </a>
+         
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

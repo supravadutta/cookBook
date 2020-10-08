@@ -1,0 +1,53 @@
+<div>
+  <p  class="loader" *ngIf="!isLoaded">Loading.....</p>
+  <div class="section_1" *ngIf="isLoaded">
+
+    <div>
+      <img [src]="detail.image" alt="" height="210px" width="320px" />
+    </div>
+    <div class="rightContainer">
+      <p class="title">{{ detail.title }}</p>
+      <div class="tagContainer">
+        <p *ngFor="let item of detail.diets">#{{ item }}</p>
+      </div>
+      <div class="featureContainer">
+        <div class="feature">
+          <p>{{ detail.readyInMinutes }}</p>
+          <p>Mins</p>
+        </div>
+        <div class="feature">
+          <p>{{ detail.healthScore }}%</p>
+          <p>Healthy</p>
+        </div>
+        <div class="feature">
+          <p>₹{{ detail.pricePerServing }}</p>
+          <p>Price</p>
+        </div>
+        <div class="feature">
+          <p>{{ detail.aggregateLikes }}</p>
+          <p>Likes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section2" *ngIf="isLoaded">
+    <div class="instruct">
+      <h3>Instruction</h3>
+      <p>
+        {{ detail.instructions }}
+      </p>
+    </div>
+    <div class="summary">
+      <h3>Summary</h3>
+      <div [innerHTML]="detail.summary"></div>
+    </div>
+  </div>
+  <div class="section3" *ngIf="isLoaded">
+    <h3>Ingredients</h3>
+    <div class="list" *ngFor="let item of detail.extendedIngredients">
+      <h4>{{ item.name }}</h4>
+      <p>{{ item.original }}</p>
+      <h5>Amount: {{ item.amount }} {{ item.unit }}</h5>
+    </div>
+  </div>
+</div>
